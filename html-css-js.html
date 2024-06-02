@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page Website</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section:nth-of-type(even) {
+    background-color: #f4f4f4;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label, form input, form textarea, form button {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About</h2>
+            <p>Welcome to my website. Here is some information about me.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Services</h2>
+            <p>These are the services I offer.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <p>Here are some of my projects.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Website. All rights reserved.</p>
+            <p>Follow us on 
+                <a href="#">Facebook</a>, 
+                <a href="#">Twitter</a>, 
+                <a href="#">Instagram</a>.
+            </p>
+        </div>
+    </footer>
+    <script>
+      // Smooth scrolling for navigation links
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Form validation
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (name === '' || email === '' || message === '') {
+        alert('Please fill out all fields.');
+    } else if (!validateEmail(email)) {
+        alert('Please enter a valid email address.');
+    } else {
+        alert('Thank you for your message!');
+        // You can add code here to send the form data to the server
+        this.reset();
+    }
+});
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
+    </script>
+</body>
+</html>
